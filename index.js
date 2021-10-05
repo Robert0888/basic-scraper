@@ -20,25 +20,26 @@ axios(url)
     
     $('.landlord-name',html).each(function() {
      const lD = $(this).text()
-     
-
+     const data = JSON.stringify(lD)
+      console.log(data);
      landLords.push(lD)
     })
 
     $('.enforcement-action', html).each(function(){
       const eA = $(this).text()
-      // console.log(eA);
-
+      const convic  = JSON.stringify(eA)
+      console.log(convic);
        conviction.push(eA)
     })
 
-    console.log(landLords);
+   //  console.log(landLords);
 
 
     $('.rental-address', html).each(function() {
      const title = $(this).text()
+     const addr = JSON.stringify(title)
      // const address = $(this).find('dd')
-     // console.log(title);
+     console.log(addr);
      address.push(title)
      
     })
