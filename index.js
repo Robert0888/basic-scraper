@@ -17,36 +17,61 @@ axios(url)
     const landLords = []
     const conviction = []
     const address = []
+    const szovi =[]
     
-    $('.landlord-name',html).each(function() {
-     const lD = $(this).text()
-     const data = JSON.stringify(lD)
-      console.log(data);
-     landLords.push(lD)
+    $('.landlord-name',html).each(function()  {
+     const lName = $(this).children('.element-hidden').text()
+     const lD = $(this).children('.node__content').children().text()
+    //  const data = JSON.stringify(lD)
+    
+    landLords.push({
+      lName,
+      lD
+    })
+    console.log(landLords);
     })
 
-    $('.enforcement-action', html).each(function(){
-      const eA = $(this).text()
-      const convic  = JSON.stringify(eA)
-      console.log(convic);
-       conviction.push(eA)
+    $('.enforcement-action', html).each(function() {
+      const eA = $(this).children('dl').children('dt').text()
+      const plan = $(this).children('dl').children('dt').text()
+      // const convic  = JSON.stringify(eA)
+      
+      
+      // console.log(convic);
+      
+      conviction.push({
+        eA,
+        plan
+      })
+      console.log(conviction);
     })
 
-   //  console.log(landLords);
+    
 
 
-    $('.rental-address', html).each(function() {
-     const title = $(this).text()
-     const addr = JSON.stringify(title)
-     // const address = $(this).find('dd')
-     console.log(addr);
-     address.push(title)
+    $('.rental-address', html).each(function()  {
+     const titleText = $(this).children().children('dd').text()
+     const title = $(this).children().children('dt').text()
+    //  const addr = JSON.stringify(title)
+    //  const titleText = $(element).find('dd')
      
+     address.push({
+       title,
+       titleText
+     })
+     console.log(address)
+     
+    })
+    $('.node__content', html).each(function() {
+      const texi = $(this).children('.node__title').text()
+      console.log($(this).find('h2').text());
+      szovi.push(texi ,',')
+      console.log(szovi);
     })
     
    }).catch((err) => {
     console.log(err);
     
    })
-
+   
 app.listen(PORT, () => console.log(`server listing at ${PORT}`))
